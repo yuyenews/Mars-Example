@@ -3,7 +3,9 @@ package com.mars.exp.core.service;
 import com.alibaba.fastjson.JSON;
 import com.mars.common.annotation.bean.MarsAop;
 import com.mars.common.annotation.bean.MarsBean;
+import com.mars.common.annotation.bean.MarsTimer;
 import com.mars.common.annotation.bean.MarsWrite;
+import com.mars.common.base.InitBean;
 import com.mars.exp.api.ExpApi;
 import com.mars.exp.api.vo.ExpVO;
 import com.mars.exp.core.aop.ExpAop;
@@ -17,7 +19,7 @@ import java.util.List;
  * service层
  */
 @MarsBean("expApiService")
-public class ExpApiService implements ExpApi {
+public class ExpApiService implements ExpApi,InitBean {
 
     /**
      * 为了让大家可以快速的跑起来，所以本示例没有连接数据库
@@ -25,6 +27,14 @@ public class ExpApiService implements ExpApi {
      */
     @MarsWrite
     private ExpDAO expDAO;
+
+    /**
+     * 初始化bean示例
+     */
+    @Override
+    public void init() {
+        System.out.println("执行了初始化bean, "+expDAO);
+    }
 
     /**
      * 这个方法上加了aop监听
@@ -72,6 +82,15 @@ public class ExpApiService implements ExpApi {
         System.out.println(marsFileUpLoad.getInputStream());
 
         return "上传成功";
+    }
+
+    /**
+     * 定时任务示例
+     * 5秒执行一次
+     */
+    @MarsTimer(loop = 5000)
+    public void timerExp(){
+        System.out.println("执行了定时任务");
     }
 
     /**
