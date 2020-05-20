@@ -33,7 +33,7 @@ public class ExpApiService implements ExpApi,InitBean {
      */
     @Override
     public void init() {
-        System.out.println("执行了初始化bean, "+expDAO);
+        System.out.println("执行了初始化bean, bean里面注入了DAO: "+expDAO);
     }
 
     /**
