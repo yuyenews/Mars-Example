@@ -10,8 +10,10 @@ import com.mars.exp.api.ExpApi;
 import com.mars.exp.api.vo.ExpVO;
 import com.mars.exp.core.aop.ExpAop;
 import com.mars.exp.core.dao.ExpDAO;
+import com.mars.server.server.request.HttpMarsResponse;
 import com.mars.server.server.request.model.MarsFileUpLoad;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,19 +71,48 @@ public class ExpApiService implements ExpApi,InitBean {
     }
 
     @Override
-    public String expUploadRequest(ExpVO expVO) {
+    public String expUploadRequest(ExpVO expVO) throws Exception {
         // 打印expDAO，如果不为null就说明已经注入了
         System.out.println(expDAO);
 
         // 打印接收到的参数，看是否接收成功
-        MarsFileUpLoad marsFileUpLoad = expVO.getMarsFileUpLoad();
-        if(marsFileUpLoad == null){
+        System.out.println(expVO.getName());
+        System.out.println(JSON.toJSONString(expVO.getNames()));
+
+        // 打印接收到的参数，看是否接收成功
+        MarsFileUpLoad[] marsFileUpLoads = expVO.getMarsFileUpLoad();
+        if(marsFileUpLoads == null){
             return "上传失败";
         }
-        System.out.println(marsFileUpLoad.getFileName());
-        System.out.println(marsFileUpLoad.getInputStream());
+        for(MarsFileUpLoad marsFileUpLoad : marsFileUpLoads){
+            System.out.println(marsFileUpLoad.getFileName());
+            System.out.println(marsFileUpLoad.getInputStream());
 
+            InputStream inputStream = marsFileUpLoad.getInputStream();
+            writeToLocal("/data/mars/download/"+marsFileUpLoad.getFileName(),inputStream);
+        }
+//        MarsFileUpLoad marsFileUpLoad = expVO.getFile();
+//        writeToLocal("/Users/yuye/Downloads/aaa/aaas"+marsFileUpLoad.getFileName(),marsFileUpLoad.getInputStream());
         return "上传成功";
+    }
+
+    private static void writeToLocal(String destination, InputStream input)
+            throws IOException {
+        int index;
+        byte[] bytes = new byte[1024];
+        FileOutputStream downloadFile = new FileOutputStream(destination);
+        while ((index = input.read(bytes)) != -1) {
+            downloadFile.write(bytes, 0, index);
+            downloadFile.flush();
+        }
+        downloadFile.close();
+        input.close();
+    }
+
+    @Override
+    public void expDownLoadRequest(HttpMarsResponse response) throws Exception{
+        InputStream inputStream = new FileInputStream(new File("/Users/yuye/Downloads/1080P_4000K_318306561.mp4"));
+        response.downLoad("aaa.mp4",inputStream);
     }
 
     /**

@@ -11,6 +11,11 @@ import java.util.Properties;
  */
 public class ExpConfig extends MarsConfig {
 
+    @Override
+    public int port() {
+        return 9090;
+    }
+
     /**
      * 配置数据源
      * @return

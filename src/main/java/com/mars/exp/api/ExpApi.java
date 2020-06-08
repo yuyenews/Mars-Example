@@ -4,6 +4,7 @@ import com.mars.common.annotation.api.MarsApi;
 import com.mars.common.annotation.api.RequestMethod;
 import com.mars.common.annotation.enums.ReqMethod;
 import com.mars.exp.api.vo.ExpVO;
+import com.mars.server.server.request.HttpMarsResponse;
 
 import java.util.List;
 
@@ -36,5 +37,11 @@ public interface ExpApi {
      * @return
      */
     @RequestMethod(ReqMethod.POST)
-    String expUploadRequest(ExpVO expVO);
+    String expUploadRequest(ExpVO expVO) throws Exception ;
+
+    /**
+     * 文件下载示例
+     * http://127.0.0.1:8080/expDownLoadRequest
+     */
+    void expDownLoadRequest(HttpMarsResponse response) throws Exception;
 }

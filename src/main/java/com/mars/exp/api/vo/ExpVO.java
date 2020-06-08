@@ -14,7 +14,16 @@ public class ExpVO {
     @MarsDataCheck(notNull = true, msg = "名称们不可以为空")
     private String[] names;
 
-    private MarsFileUpLoad marsFileUpLoad;
+    /**
+     * 这个变量名不需要跟参数key一样，他会把所有的文件都放里面
+     * 如果key一致，则只放一个
+     */
+    private MarsFileUpLoad[] marsFileUpLoad;
+
+    /**
+     * 这个变量名要跟参数key一样
+     */
+    private MarsFileUpLoad file;
 
     public String getName() {
         return name;
@@ -32,11 +41,19 @@ public class ExpVO {
         this.names = names;
     }
 
-    public MarsFileUpLoad getMarsFileUpLoad() {
+    public MarsFileUpLoad[] getMarsFileUpLoad() {
         return marsFileUpLoad;
     }
 
-    public void setMarsFileUpLoad(MarsFileUpLoad marsFileUpLoad) {
+    public void setMarsFileUpLoad(MarsFileUpLoad[] marsFileUpLoad) {
         this.marsFileUpLoad = marsFileUpLoad;
+    }
+
+    public MarsFileUpLoad getFile() {
+        return file;
+    }
+
+    public void setFile(MarsFileUpLoad file) {
+        this.file = file;
     }
 }
