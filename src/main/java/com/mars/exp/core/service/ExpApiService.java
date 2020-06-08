@@ -25,7 +25,7 @@ public class ExpApiService implements ExpApi,InitBean {
 
     /**
      * 为了让大家可以快速的跑起来，所以本示例没有连接数据库
-     * 所以自然也就不会调用dao的方法了，这里注入进来的，只是为了演示IOC的用法
+     * 所以自然也就不会调用dao的方法了，这里注入进来dao，只是为了演示IOC的用法
      */
     @MarsWrite
     private ExpDAO expDAO;
@@ -52,6 +52,7 @@ public class ExpApiService implements ExpApi,InitBean {
         // 打印接收到的参数，看是否接收成功
         System.out.println(expVO.getName());
         System.out.println(JSON.toJSONString(expVO.getNames()));
+        System.out.println(expVO.getDate());
 
         // 返回数据
         return getExpResultData();
@@ -65,6 +66,7 @@ public class ExpApiService implements ExpApi,InitBean {
         // 打印接收到的参数，看是否接收成功
         System.out.println(expVO.getName());
         System.out.println(JSON.toJSONString(expVO.getNames()));
+        System.out.println(expVO.getDate());
 
         // 返回数据
         return getExpResultData();
@@ -78,8 +80,9 @@ public class ExpApiService implements ExpApi,InitBean {
         // 打印接收到的参数，看是否接收成功
         System.out.println(expVO.getName());
         System.out.println(JSON.toJSONString(expVO.getNames()));
+        System.out.println(expVO.getDate());
 
-        // 打印接收到的参数，看是否接收成功
+        // 打印接收到的文件，看是否接收成功
         MarsFileUpLoad[] marsFileUpLoads = expVO.getMarsFileUpLoad();
         if(marsFileUpLoads == null){
             return "上传失败";
@@ -89,24 +92,11 @@ public class ExpApiService implements ExpApi,InitBean {
             System.out.println(marsFileUpLoad.getInputStream());
 
             InputStream inputStream = marsFileUpLoad.getInputStream();
-            writeToLocal("/data/mars/download/"+marsFileUpLoad.getFileName(),inputStream);
+            writeToLocal("/Users/yuye/Downloads/aaa/"+marsFileUpLoad.getFileName(),inputStream);
         }
 //        MarsFileUpLoad marsFileUpLoad = expVO.getFile();
 //        writeToLocal("/Users/yuye/Downloads/aaa/aaas"+marsFileUpLoad.getFileName(),marsFileUpLoad.getInputStream());
         return "上传成功";
-    }
-
-    private static void writeToLocal(String destination, InputStream input)
-            throws IOException {
-        int index;
-        byte[] bytes = new byte[1024];
-        FileOutputStream downloadFile = new FileOutputStream(destination);
-        while ((index = input.read(bytes)) != -1) {
-            downloadFile.write(bytes, 0, index);
-            downloadFile.flush();
-        }
-        downloadFile.close();
-        input.close();
     }
 
     @Override
@@ -140,5 +130,18 @@ public class ExpApiService implements ExpApi,InitBean {
         list.add(exp);
 
         return list;
+    }
+
+    private static void writeToLocal(String destination, InputStream input)
+            throws IOException {
+        int index;
+        byte[] bytes = new byte[1024];
+        FileOutputStream downloadFile = new FileOutputStream(destination);
+        while ((index = input.read(bytes)) != -1) {
+            downloadFile.write(bytes, 0, index);
+            downloadFile.flush();
+        }
+        downloadFile.close();
+        input.close();
     }
 }

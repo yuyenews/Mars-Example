@@ -1,6 +1,7 @@
 package com.mars.exp.config;
 
 import com.mars.common.base.config.MarsConfig;
+import com.mars.common.base.config.model.ThreadPoolConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,11 @@ public class ExpConfig extends MarsConfig {
     @Override
     public int port() {
         return 9090;
+    }
+
+    @Override
+    public ThreadPoolConfig getThreadPoolConfig() {
+        return super.getThreadPoolConfig();
     }
 
     /**

@@ -1,7 +1,10 @@
 package com.mars.exp.api.vo;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.mars.common.annotation.api.MarsDataCheck;
 import com.mars.server.server.request.model.MarsFileUpLoad;
+
+import java.util.Date;
 
 /**
  * 所有实体类都支持lombok，这里为了兼容所有的环境，就还是采用的原始的get，set
@@ -24,6 +27,9 @@ public class ExpVO {
      * 这个变量名要跟参数key一样
      */
     private MarsFileUpLoad file;
+
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date date;
 
     public String getName() {
         return name;
@@ -55,5 +61,13 @@ public class ExpVO {
 
     public void setFile(MarsFileUpLoad file) {
         this.file = file;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
