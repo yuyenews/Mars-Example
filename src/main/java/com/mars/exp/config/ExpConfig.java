@@ -12,16 +12,6 @@ import java.util.Properties;
  */
 public class ExpConfig extends MarsConfig {
 
-    @Override
-    public int port() {
-        return 9090;
-    }
-
-    @Override
-    public ThreadPoolConfig getThreadPoolConfig() {
-        return super.getThreadPoolConfig();
-    }
-
     /**
      * 配置数据源
      * @return
