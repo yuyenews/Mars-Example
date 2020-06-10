@@ -13,7 +13,23 @@
         <dependency>
             <groupId>com.github.yuyenews</groupId>
             <artifactId>mars-starter</artifactId>
-            <version>3.0.20</version>
+            <version>3.0.21</version>
+        </dependency>
+
+        <!-- ############ 如果需要打印日志到文件，那下面两个依赖必须引入 ############ -->
+
+        <!-- 这个桥梁必须引入，用那个日至框架就引入哪个桥梁 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+        <!-- 具体要用的日志框架 -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
     </dependencies>
 
