@@ -12,6 +12,8 @@ import com.mars.exp.core.aop.ExpAop;
 import com.mars.exp.core.dao.ExpDAO;
 import com.mars.server.server.request.HttpMarsResponse;
 import com.mars.server.server.request.model.MarsFileUpLoad;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ import java.util.List;
  */
 @MarsBean("expApiService")
 public class ExpApiService implements ExpApi,InitBean {
+
+    private Logger logger = LoggerFactory.getLogger(ExpApiService.class);
 
     /**
      * 为了让大家可以快速的跑起来，所以本示例没有连接数据库
@@ -35,7 +39,7 @@ public class ExpApiService implements ExpApi,InitBean {
      */
     @Override
     public void init() {
-        System.out.println("执行了初始化bean, bean里面注入了DAO: "+expDAO);
+        logger.info("执行了初始化bean, bean里面注入了DAO: "+expDAO);
     }
 
     /**
@@ -47,12 +51,12 @@ public class ExpApiService implements ExpApi,InitBean {
     @MarsAop(className = ExpAop.class)
     public List<ExpVO> expGetRequest(ExpVO expVO) {
         // 打印expDAO，如果不为null就说明已经注入了
-        System.out.println(expDAO);
+        logger.info(String.valueOf(expDAO == null));
 
         // 打印接收到的参数，看是否接收成功
-        System.out.println(expVO.getName());
-        System.out.println(JSON.toJSONString(expVO.getNames()));
-        System.out.println(expVO.getDate());
+        logger.info(expVO.getName());
+        logger.info(JSON.toJSONString(expVO.getNames()));
+        logger.info(String.valueOf(expVO.getDate()));
 
         // 返回数据
         return getExpResultData();
@@ -61,12 +65,12 @@ public class ExpApiService implements ExpApi,InitBean {
     @Override
     public List<ExpVO> expPostRequest(ExpVO expVO) {
         // 打印expDAO，如果不为null就说明已经注入了
-        System.out.println(expDAO);
+        logger.info(String.valueOf(expDAO == null));
 
         // 打印接收到的参数，看是否接收成功
-        System.out.println(expVO.getName());
-        System.out.println(JSON.toJSONString(expVO.getNames()));
-        System.out.println(expVO.getDate());
+        logger.info(expVO.getName());
+        logger.info(JSON.toJSONString(expVO.getNames()));
+        logger.info(String.valueOf(expVO.getDate()));
 
         // 返回数据
         return getExpResultData();
@@ -75,12 +79,12 @@ public class ExpApiService implements ExpApi,InitBean {
     @Override
     public String expUploadRequest(ExpVO expVO) throws Exception {
         // 打印expDAO，如果不为null就说明已经注入了
-        System.out.println(expDAO);
+        logger.info(String.valueOf(expDAO == null));
 
         // 打印接收到的参数，看是否接收成功
-        System.out.println(expVO.getName());
-        System.out.println(JSON.toJSONString(expVO.getNames()));
-        System.out.println(expVO.getDate());
+        logger.info(expVO.getName());
+        logger.info(JSON.toJSONString(expVO.getNames()));
+        logger.info(String.valueOf(expVO.getDate()));
 
         // 打印接收到的文件，看是否接收成功
         MarsFileUpLoad[] marsFileUpLoads = expVO.getMarsFileUpLoad();
@@ -111,7 +115,7 @@ public class ExpApiService implements ExpApi,InitBean {
      */
     @MarsTimer(loop = 5000)
     public void timerExp(){
-        System.out.println("执行了定时任务");
+        logger.info("执行了定时任务");
     }
 
     /**
