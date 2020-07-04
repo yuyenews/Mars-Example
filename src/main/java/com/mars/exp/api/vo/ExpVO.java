@@ -5,6 +5,7 @@ import com.mars.common.annotation.api.MarsDataCheck;
 import com.mars.server.server.request.model.MarsFileUpLoad;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 所有实体类都支持lombok，这里为了兼容所有的环境，就还是采用的原始的get，set
@@ -16,6 +17,8 @@ public class ExpVO {
 
     @MarsDataCheck(notNull = true, msg = "名称们不可以为空")
     private String[] names;
+
+    private List<ExpVO> list;
 
     /**
      * 这个变量名不需要跟参数key一样，他会把所有的文件都放里面
@@ -69,5 +72,13 @@ public class ExpVO {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public List<ExpVO> getList() {
+        return list;
+    }
+
+    public void setList(List<ExpVO> list) {
+        this.list = list;
     }
 }

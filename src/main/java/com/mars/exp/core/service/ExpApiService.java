@@ -71,7 +71,7 @@ public class ExpApiService implements ExpApi,InitBean {
         logger.info(expVO.getName());
         logger.info(JSON.toJSONString(expVO.getNames()));
         logger.info(String.valueOf(expVO.getDate()));
-
+        logger.info(JSON.toJSONString(expVO.getList()));
         // 返回数据
         return getExpResultData();
     }

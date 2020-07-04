@@ -13,7 +13,14 @@
         <dependency>
             <groupId>com.github.yuyenews</groupId>
             <artifactId>mars-starter</artifactId>
-            <version>3.0.21</version>
+            <version>3.0.23</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- ############ 如果需要打印日志到文件，那下面两个依赖必须引入 ############ -->
