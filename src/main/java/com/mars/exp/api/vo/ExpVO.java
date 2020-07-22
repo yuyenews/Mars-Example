@@ -15,7 +15,7 @@ public class ExpVO {
     @MarsDataCheck(notNull = true, msg = "名称不可以为空")
     private String name;
 
-    @MarsDataCheck(notNull = true, msg = "名称们不可以为空")
+    @MarsDataCheck(notNull = true, msg = "名称们不可以为空",apis = {"expGet*"})
     private String[] names;
 
     private List<ExpVO> list;
