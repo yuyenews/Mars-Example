@@ -8,6 +8,9 @@ import com.mars.server.server.request.HttpMarsResponse;
 
 import java.util.List;
 
+/**
+ * Controller变成了一个interface
+ */
 @MarsApi(refBean = "expApiService")
 public interface ExpApi {
 
@@ -22,7 +25,6 @@ public interface ExpApi {
     /**
      * post请求示例
      * http://127.0.0.1:8080/expPostRequest
-     * 传参用表单，不支持json传参
      * @param expVO
      * @return
      */
@@ -32,7 +34,6 @@ public interface ExpApi {
     /**
      * 文件上传示例
      * http://127.0.0.1:8080/expUploadRequest
-     * 传参用formData，不支持json传参
      * @param expVO
      * @return
      */
