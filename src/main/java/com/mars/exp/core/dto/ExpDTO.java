@@ -2,6 +2,8 @@ package com.mars.exp.core.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.util.Date;
+
 /**
  * 这里面尽量用包装器类型，比如用Integer不用int，
  * 因为包装器类型可以赋值为null，这样如果不需要被sql用到的时候，可以赋值为null，免被带入到sql
@@ -17,4 +19,10 @@ public class ExpDTO {
      */
     @JSONField(name = "数据库字段名")
     private Integer id;
+
+    /**
+     * 如果是Date类型的字段，必须设置format属性，否则在插入和修改的时候，框架识别不了，会报错
+     */
+    @JSONField(name = "数据库字段名",format = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 }
