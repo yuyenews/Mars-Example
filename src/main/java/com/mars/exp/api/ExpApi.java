@@ -1,7 +1,9 @@
 package com.mars.exp.api;
 
 import com.mars.common.annotation.api.MarsApi;
+import com.mars.common.annotation.api.MarsReference;
 import com.mars.common.annotation.api.RequestMethod;
+import com.mars.common.annotation.enums.RefType;
 import com.mars.common.annotation.enums.ReqMethod;
 import com.mars.exp.api.vo.ExpVO;
 import com.mars.server.server.request.HttpMarsResponse;
@@ -15,11 +17,12 @@ import java.util.List;
 public interface ExpApi {
 
     /**
-     * get请求示例
+     * get请求示例,此示例引用的是expApiServiceTwo里的方法
      * http://127.0.0.1:8080/expGetRequest?name=张三&names=王五&names=赵六
      * @param expVO
      * @return
      */
+    @MarsReference(beanName = "expApiServiceTwo",refName = "expGetRequest",refType = RefType.METHOD)
     List<ExpVO> expGetRequest(ExpVO expVO);
 
     /**
@@ -37,7 +40,7 @@ public interface ExpApi {
      * @param expVO
      * @return
      */
-    @RequestMethod(ReqMethod.POST)
+    @RequestMethod(ReqMethod.PUT)
     String expUploadRequest(ExpVO expVO) throws Exception ;
 
     /**
