@@ -13,11 +13,11 @@ public class TestOnLoad implements BaseOnLoad {
 
     @Override
     public void before() throws Exception {
-        System.out.println("onload before"+(expApiService != null));
+        System.out.println("onload before方法执行,"+(expApiService != null));
     }
 
     @Override
     public void after() throws Exception {
-        System.out.println("onload after"+(expApiService != null));
+        System.out.println("onload after方法执行,"+(expApiService != null));
     }
 }
