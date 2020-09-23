@@ -1,6 +1,7 @@
 package com.mars.exp.config;
 
 import com.mars.common.base.config.MarsConfig;
+import com.mars.common.base.config.model.FileUploadConfig;
 import com.mars.common.base.config.model.ThreadPoolConfig;
 
 import java.util.ArrayList;
@@ -11,6 +12,14 @@ import java.util.Properties;
  * 更多配置项，请到官网查看官方文档
  */
 public class ExpConfig extends MarsConfig {
+
+    @Override
+    public FileUploadConfig fileUploadConfig() {
+        FileUploadConfig fileUploadConfig = new FileUploadConfig();
+        fileUploadConfig.setFileSizeMax(fileUploadConfig.getFileSizeMax()*100);
+        fileUploadConfig.setSizeMax(fileUploadConfig.getSizeMax()*100);
+        return fileUploadConfig;
+    }
 
     /**
      * 这个是有默认值的，不是必配的，完全可以不实现这个方法
