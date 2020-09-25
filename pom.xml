@@ -13,7 +13,7 @@
         <dependency>
             <groupId>com.github.yuyenews</groupId>
             <artifactId>mars-starter</artifactId>
-            <version>3.0.32</version>
+            <version>3.0.35</version>
         </dependency>
 
         <dependency>
