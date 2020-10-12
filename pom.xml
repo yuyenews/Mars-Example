@@ -13,14 +13,14 @@
         <dependency>
             <groupId>com.github.yuyenews</groupId>
             <artifactId>mars-starter</artifactId>
-            <version>3.0.37</version>
+            <version>3.0.38</version>
         </dependency>
 
-        <!-- 如果想用tomcat启动，就引入下面被注释掉的这个包，然后把上面那个包给删了 -->
+        <!-- 如果想用tomcat启动，就放开这个注释，其他一切照旧 -->
 <!--        <dependency>-->
 <!--            <groupId>com.github.yuyenews</groupId>-->
 <!--            <artifactId>mars-starter-tomcat</artifactId>-->
-<!--            <version>3.0.37</version>-->
+<!--            <version>3.0.38</version>-->
 <!--        </dependency>-->
 
         <dependency>
