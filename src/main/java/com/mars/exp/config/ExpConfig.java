@@ -12,6 +12,10 @@ import java.util.Properties;
  */
 public class ExpConfig extends MarsConfig {
 
+    /**
+     * 限制上传文件的大小
+     * @return
+     */
     @Override
     public FileUploadConfig fileUploadConfig() {
         FileUploadConfig fileUploadConfig = new FileUploadConfig();
@@ -20,6 +24,10 @@ public class ExpConfig extends MarsConfig {
         return fileUploadConfig;
     }
 
+    /**
+     * 缓冲区，每次从请求的通道中读取多少字节
+     * @return
+     */
     @Override
     public int readSize() {
         return 1024 * 3;
