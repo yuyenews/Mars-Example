@@ -2,7 +2,6 @@ package com.mars.exp.config;
 
 import com.mars.common.base.config.MarsConfig;
 import com.mars.common.base.config.model.FileUploadConfig;
-import com.mars.common.base.config.model.ThreadPoolConfig;
 
 import java.util.ArrayList;
 import java.util.List;
