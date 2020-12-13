@@ -23,7 +23,7 @@ public class ExpConfig extends MarsConfig {
 
     @Override
     public int readSize() {
-        return 109 * 3;
+        return 1024 * 3;
     }
 
     /**
