@@ -21,23 +21,9 @@ public class ExpConfig extends MarsConfig {
         return fileUploadConfig;
     }
 
-    /**
-     * 这个是有默认值的，不是必配的，完全可以不实现这个方法
-     * @return
-     */
     @Override
-    public ThreadPoolConfig getThreadPoolConfig() {
-        ThreadPoolConfig threadPoolConfig = new ThreadPoolConfig();
-        // 最大TCP连接池(并发数)
-        threadPoolConfig.setBackLog(50);
-
-        // 核心线程数，同时允许几个线程处理请求
-        threadPoolConfig.setCorePoolSize(5);
-        // 最大线程数，最多允许几个线程处理请求
-        threadPoolConfig.setMaxPoolSize(1000);
-        // 线程多久不执行会被回收
-        threadPoolConfig.setKeepAliveTime(20);
-        return threadPoolConfig;
+    public int readSize() {
+        return 109 * 3;
     }
 
     /**

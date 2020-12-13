@@ -84,8 +84,8 @@ public class ExpApiService implements InitBean {
     }
 
     public void expDownLoadRequest(HttpMarsResponse response) throws Exception{
-        InputStream inputStream = new FileInputStream(new File("/Users/yuye/Downloads/mars-tomcat-3.0.16-sources.jar"));
-        response.downLoad("aaa.jar",inputStream);
+        InputStream inputStream = new FileInputStream(new File("/Users/yuye/Downloads/vvv2.zip"));
+        response.downLoad("aaa2.zip",inputStream);
     }
 
     /**
