@@ -2,6 +2,7 @@ package com.mars.exp.config;
 
 import com.mars.common.base.config.MarsConfig;
 import com.mars.common.base.config.model.FileUploadConfig;
+import com.mars.common.base.config.model.RequestConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,11 @@ public class ExpConfig extends MarsConfig {
         return fileUploadConfig;
     }
 
-    /**
-     * 缓冲区，每次从请求的通道中读取多少字节
-     * @return
-     */
     @Override
-    public int readSize() {
-        return 1024 * 3;
+    public RequestConfig requestConfig() {
+        RequestConfig requestConfig = new RequestConfig();
+        requestConfig.setReadTimeout(10000);
+        return requestConfig;
     }
 
     /**

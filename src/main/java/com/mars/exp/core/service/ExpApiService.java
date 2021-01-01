@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.mars.common.annotation.bean.MarsBean;
 import com.mars.common.annotation.bean.MarsTimer;
 import com.mars.common.annotation.bean.MarsWrite;
+import com.mars.common.annotation.enums.TractionLevel;
+import com.mars.common.annotation.jdbc.Traction;
 import com.mars.common.base.InitBean;
 import com.mars.exp.api.vo.ExpVO;
 import com.mars.exp.core.dao.ExpDAO;
@@ -39,6 +41,7 @@ public class ExpApiService implements InitBean {
         logger.info("执行了初始化bean, bean里面注入了DAO: "+expDAO);
     }
 
+//    @Traction(level = TractionLevel.READ_COMMITTED)
     public List<ExpVO> expPostRequest(ExpVO expVO) {
         // 打印expDAO，如果不为null就说明已经注入了
         logger.info(String.valueOf(expDAO == null));
