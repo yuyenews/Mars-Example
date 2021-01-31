@@ -23,7 +23,6 @@ public class ExpApiServiceTwo {
      */
     @MarsAop(className = ExpAop.class)
     public List<ExpVO> expGetRequest(ExpVO expVO) {
-
         // 打印接收到的参数，看是否接收成功
         logger.info(expVO.getName());
         logger.info(JSON.toJSONString(expVO.getNames()));

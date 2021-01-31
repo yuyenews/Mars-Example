@@ -2,6 +2,7 @@ package com.mars.exp.config;
 
 import com.mars.common.base.config.MarsConfig;
 import com.mars.common.base.config.model.FileUploadConfig;
+import com.mars.common.base.config.model.JedisConfig;
 import com.mars.common.base.config.model.RequestConfig;
 
 import java.util.ArrayList;
@@ -31,6 +32,23 @@ public class ExpConfig extends MarsConfig {
         requestConfig.setReadTimeout(10000);
         requestConfig.setReadSize(1*1024*1024);
         return requestConfig;
+    }
+
+    /**
+     * redis连接
+     * @return
+     */
+    @Override
+    public JedisConfig jedisConfig() {
+        JedisConfig jedisConfig = new JedisConfig();
+        jedisConfig.setHost("127.0.0.1");
+        jedisConfig.setPort(6379);
+        jedisConfig.setDatabase(5);
+
+        // 实际场景下，这句最好配一下，根据具体情况进行连接池的参数配置
+        // jedisConfig.setJedisPoolConfig();
+
+        return jedisConfig;
     }
 
     /**
