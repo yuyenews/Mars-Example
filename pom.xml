@@ -13,7 +13,7 @@
         <dependency>
             <groupId>com.github.yuyenews</groupId>
             <artifactId>mars-starter</artifactId>
-            <version>3.2.11</version>
+            <version>3.2.13</version>
         </dependency>
 
         <!-- 如果想用tomcat启动，就放开这个注释，其他一切照旧 -->
