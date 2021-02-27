@@ -31,7 +31,7 @@ public interface ExpApi {
      * @param expVO
      * @return
      */
-    @RequestMethod(ReqMethod.POST)
+    @RequestMethod({ReqMethod.POST, ReqMethod.PUT})
     List<ExpVO> expPostRequest(ExpVO expVO);
 
     /**
