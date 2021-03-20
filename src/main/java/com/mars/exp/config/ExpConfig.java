@@ -2,12 +2,11 @@ package com.mars.exp.config;
 
 import com.mars.common.base.config.MarsConfig;
 import com.mars.common.base.config.model.FileUploadConfig;
+import com.mars.common.base.config.model.JWTConfig;
 import com.mars.common.base.config.model.JedisConfig;
 import com.mars.common.base.config.model.RequestConfig;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * 更多配置项，请到官网查看官方文档
@@ -32,6 +31,22 @@ public class ExpConfig extends MarsConfig {
         requestConfig.setReadTimeout(10000);
         requestConfig.setReadSize(1*1024*1024);
         return requestConfig;
+    }
+
+    /**
+     * jwt配置
+     * @return
+     */
+    @Override
+    public JWTConfig jwtConfig() {
+        JWTConfig jwtConfig = new JWTConfig();
+        // token失效时间单位，默认: 秒
+        jwtConfig.setCalendarField(Calendar.SECOND);
+        // token失效时间，默认: 86400秒
+        jwtConfig.setCalendarInterval(86400);
+        // 秘钥，默认: 一个UUID
+        jwtConfig.setSecret(UUID.randomUUID().toString());
+        return jwtConfig;
     }
 
     /**
