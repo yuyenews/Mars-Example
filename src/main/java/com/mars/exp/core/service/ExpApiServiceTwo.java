@@ -1,8 +1,8 @@
 package com.mars.exp.core.service;
 
-import com.alibaba.fastjson.JSON;
 import com.mars.common.annotation.bean.MarsAop;
 import com.mars.common.annotation.bean.MarsBean;
+import com.mars.common.util.JSONUtil;
 import com.mars.exp.api.vo.ExpVO;
 import com.mars.exp.core.aop.ExpAop;
 import org.slf4j.Logger;
@@ -25,7 +25,7 @@ public class ExpApiServiceTwo {
     public List<ExpVO> expGetRequest(ExpVO expVO) {
         // 打印接收到的参数，看是否接收成功
         logger.info(expVO.getName());
-        logger.info(JSON.toJSONString(expVO.getNames()));
+        logger.info(JSONUtil.toJSONString(expVO.getNames()));
         logger.info(String.valueOf(expVO.getDate()));
 
         // 返回数据

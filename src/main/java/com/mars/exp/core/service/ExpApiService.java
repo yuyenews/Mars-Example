@@ -1,14 +1,13 @@
 package com.mars.exp.core.service;
 
-import com.alibaba.fastjson.JSON;
 import com.mars.common.annotation.bean.MarsBean;
 import com.mars.common.annotation.bean.MarsTimer;
 import com.mars.common.annotation.bean.MarsWrite;
-import com.mars.common.annotation.enums.TractionLevel;
-import com.mars.common.annotation.jdbc.Traction;
 import com.mars.common.base.InitBean;
+import com.mars.common.util.JSONUtil;
 import com.mars.exp.api.vo.ExpVO;
 import com.mars.exp.core.dao.ExpDAO;
+import com.mars.server.server.jwt.JwtManager;
 import com.mars.server.server.request.HttpMarsResponse;
 import com.mars.server.server.request.model.MarsFileUpLoad;
 import org.slf4j.Logger;
@@ -39,6 +38,22 @@ public class ExpApiService implements InitBean {
     @Override
     public void init() {
         logger.info("执行了初始化bean, bean里面注入了DAO: "+expDAO);
+
+        try {
+            JwtManager jwtManager = JwtManager.getJwtManager();
+
+            ExpVO expVO = new ExpVO();
+            expVO.setName("aaaa");
+            String token = jwtManager.createToken(expVO);
+
+            System.out.println(token);
+
+            expVO = jwtManager.getObject(token, ExpVO.class);
+            System.out.println(expVO);
+            System.out.println(JSONUtil.toJSONString(expVO));
+        } catch (Exception e){
+            logger.error("JWT创建token异常", e);
+        }
     }
 
 //    @Traction(level = TractionLevel.READ_COMMITTED)
@@ -48,7 +63,7 @@ public class ExpApiService implements InitBean {
 
         // 打印接收到的参数，看是否接收成功
         logger.info(expVO.getName());
-        logger.info(JSON.toJSONString(expVO.getNames()));
+        logger.info(JSONUtil.toJSONString(expVO.getNames()));
         logger.info(String.valueOf(expVO.getDate()));
         List<ExpVO> expVOList = expVO.getList();
         if(expVOList != null){
@@ -66,7 +81,7 @@ public class ExpApiService implements InitBean {
 
         // 打印接收到的参数，看是否接收成功
         logger.info(expVO.getName());
-        logger.info(JSON.toJSONString(expVO.getNames()));
+        logger.info(JSONUtil.toJSONString(expVO.getNames()));
         logger.info(String.valueOf(expVO.getDate()));
 
         // 打印接收到的文件，看是否接收成功

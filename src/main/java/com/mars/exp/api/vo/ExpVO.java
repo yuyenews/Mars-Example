@@ -1,6 +1,6 @@
 package com.mars.exp.api.vo;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mars.common.annotation.api.MarsDataCheck;
 import com.mars.server.server.request.model.MarsFileUpLoad;
 
@@ -31,7 +31,7 @@ public class ExpVO {
      */
     private MarsFileUpLoad file;
 
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
 
     public String getName() {
