@@ -1,6 +1,7 @@
 package com.mars.exp.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
  * 这里面尽量用包装器类型，比如用Integer不用int，
  * 因为包装器类型可以赋值为null，这样如果不需要被sql用到的时候，可以赋值为null，免被带入到sql
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ExpDTO {
 
     /**
