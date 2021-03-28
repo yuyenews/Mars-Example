@@ -1,10 +1,7 @@
 package com.mars.exp.config;
 
 import com.mars.common.base.config.MarsConfig;
-import com.mars.common.base.config.model.FileUploadConfig;
-import com.mars.common.base.config.model.JWTConfig;
-import com.mars.common.base.config.model.JedisConfig;
-import com.mars.common.base.config.model.RequestConfig;
+import com.mars.common.base.config.model.*;
 
 import java.util.*;
 
@@ -23,6 +20,14 @@ public class ExpConfig extends MarsConfig {
         fileUploadConfig.setFileSizeMax(fileUploadConfig.getFileSizeMax()*100);
         fileUploadConfig.setSizeMax(fileUploadConfig.getSizeMax()*100);
         return fileUploadConfig;
+    }
+
+    @Override
+    public ThreadPoolConfig threadPoolConfig() {
+        ThreadPoolConfig threadPoolConfig = new ThreadPoolConfig();
+        threadPoolConfig.setBackLog(100);
+        threadPoolConfig.setCorePoolSize(30);
+        return threadPoolConfig;
     }
 
     @Override
