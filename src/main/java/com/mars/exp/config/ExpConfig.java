@@ -35,6 +35,7 @@ public class ExpConfig extends MarsConfig {
         RequestConfig requestConfig = new RequestConfig();
         requestConfig.setReadTimeout(10000);
         requestConfig.setReadSize(1*1024*1024);
+        requestConfig.setWriteTimeout(10000);
         return requestConfig;
     }
 
