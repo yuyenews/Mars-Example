@@ -38,22 +38,6 @@ public class ExpApiService implements InitBean {
     @Override
     public void init() {
         logger.info("执行了初始化bean, bean里面注入了DAO: "+expDAO);
-
-        try {
-            JwtManager jwtManager = JwtManager.getJwtManager();
-
-            ExpVO expVO = new ExpVO();
-            expVO.setName("aaaa");
-            String token = jwtManager.createToken(expVO);
-
-            System.out.println(token);
-
-            expVO = jwtManager.getObject(token, ExpVO.class);
-            System.out.println(expVO);
-            System.out.println(JSONUtil.toJSONString(expVO));
-        } catch (Exception e){
-            logger.error("JWT创建token异常", e);
-        }
     }
 
 //    @Traction(level = TractionLevel.READ_COMMITTED)
